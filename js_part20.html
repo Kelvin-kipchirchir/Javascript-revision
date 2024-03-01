@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Js forms</title>
+	<h2>Introducing JS Forms</h2>
+
+</head>
+<body>
+	<!-- methods()-submit(),reset()-reset form value-->
+
+	<center>
+		<h2>LOGIN FORM</h2>
+		<form id="login_form" onsubmit="submit_form();">
+			<label>USERNAME:</lable>
+			<input type="text" placeholder="Enter your Email_id" ><br><br>
+			<label>PASSWORD:</label>
+			<input type="password" placeholder="Enter password"><br><br>
+			<input type="submit" value="Login">
+			<input type="button" value="sign up" onclick="create();">
+			<!-- 
+				when we submit form the action is taken just before request sent to server.it allows us to add an eventlistener that enable us to place various validation on html collect and use to create a login or sigh up page and use both-->
+		</form>
+	</center>
+<!--connect with js-->
+<script type="text/javascript">
+	function submit_form(){
+		alert("login successfully")
+	}
+	function create(){
+		window.location = "signup.html";
+		
+	}
+</script>
+</body>
+</html>

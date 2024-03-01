@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sigh up page</title>
+</head>
+<body>
+	<center>
+		<h1>CREATE YOUR ACCOUNT</h1>
+		<table cellspacing="2" align="center" cellpadding="8" border="0">
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" placeholder="enter your name" id="name" ></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type="email" placeholder="Enter your mail" id="email" ></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type="Password" placeholder="set your Password" id="password" ></td>
+			</tr>
+			<tr>
+				<td>Confirm Password:</td>
+				<td><input type="Password" placeholder="repeat your Password" id="cpassword" ></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="create" onclick="create_account()" ></td>
+			</tr>
+			
+		</table>
+	</center>
+	<script type="text/javascript">
+		function create_account(){
+			var name = document.getElementById("name").value;
+			var email = document.getElementById("email").value;
+			var password = document.getElementById("password").value;
+			var cpassword = document.getElementById("cpassword").value;
+
+			//password validation
+			var letters = /^[A-Za-z] +$ /;
+			var email_val = /^([a-zA-Z0-9_\.\-])+\0(([a-zA-Z0-9\-]))+([a-zA-Z0-9]{2,4})+$ /;
+			if(name == ""|| email == "" || password == "" || cpassword == ""){
+				alert("enter each detail correctly")
+			}else if(!letters.test(name)){
+				alert("Name is incorrect,must contain alphabets only")
+			}else if(!email_val.test(email)){
+				alert("invalid email format please enter a valid email")
+			}else if(password!=cpassword){
+				alert("password mismatch check again")
+			}else if(password.length<6){
+				alert("password minimum length is 6")
+			}else if(password.length>12){
+				aler("password maximum length is 12")
+			}
+			else{
+				alert("your account is created successfully redirecting to dragon empire.com")
+				window.location = "https://www.dragonempire.com";
+			}
+		}
+	</script>
+
+</body>
+</html>

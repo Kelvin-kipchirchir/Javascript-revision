@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exception handling in js</title>
+	<h3>Introducing Exception Handling in Js</h3>
+</head>
+<body>
+	<!--
+		Exception=>signifies presence of an abnormal condition which requires special operatable techniques
+		in programming its anomolous code that breaks the normal flow of the code
+        Exception handling=>process/method used for handling the abnormal statements in the code
+        Types of errors:
+        syntax error-user makes mistakes in pro-defined syntax of programming
+        Runtime error-occurs during excecution of a program
+        logical errors-occurs when there is any logical mistake in the program that may not produce desired output and terminate abnormally
+        Error object-
+        when runtime error occurs it creates a throw an error object.such an object can be used  as a base for user defined exceptions
+        -error object has 2 properties:
+        1)Name-object property sets or returns an error name
+        2)message-property returns an error message in a string form
+
+        standard built in error types/error construction
+        EvalError-creates instance for error that occured in the eval()which is a global function used for evaluating js string code
+        internal error-creates an instance where the js engine throws internal error
+        Range error-creates an instance for error that occur
+        Referrence error-create an instance  for the error that occurs when an invalid reference is deferenced
+        syntax error-instance is created for the syntax error that may occur
+        type error-when a variable is not a valid type,an instance is created for such an error
+        urlError-instance created for the error that occurs when invalid parameter are paased
+
+        Exception
+        ->throw statement
+        ->try catch exception
+        ->try catch...finally exception
+	-->
+	<form>
+		<input type="number" name="" id="num">
+		<input type="number" name="" id="num2">
+		<button id="button" onclick="divide();">find division</button>
+	</form>
+
+</body>
+<script type="text/javascript">
+	//try catch
+	try{
+		var a = ["30","34","78","25"];
+		document.write(a);
+		document.write(b)
+	}catch(e){
+		alert("error shown is :"+e.message);
+	}
+	//throw statement->used to create user deined error
+	try{
+		throw new Error("this is a throw keyword");
+		//defined throw statement
+	}catch(e){
+		document.writeln(e.message)
+	}
+	//try catch...fimally
+	//optional block of statement excecuted after the excecution of try and catch statement final block doesnot hold for the exception to be thrown
+	//-any exception thrown/not finally block code if present will definately be excecuted
+	try{
+		var a = 3;
+		if (a==2) {
+			document.writeln("ok")
+		}
+	}catch(Error){
+		document.writeln("Error found"+e.message)
+	}finally{
+		document.writeln("value of a is 2")
+	}
+	function divide(){
+		var x = document.getElementById("num");
+		var y = document.getElementById("num2");
+		try{
+		if (x%y == 0) {
+			document.writeln("is an even number")
+		}else{
+			document.writeln("is an odd number")
+		}
+		catch(e){
+			document.writeln("error"+e.message)
+		}
+	}
+</script>
+</html>

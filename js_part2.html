@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>javascript functions</title>
+	<strong>part2:javascript functions</strong>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/* functions types:
+1.functional arguments
+2.function with return types
+3.
+
+*/
+//function
+function msg(){
+	alert("good morning fellow programmer")
+}
+//2.parameterized function
+function getCube(number){
+	alert(number*number*number)
+}
+//3.function with return value
+function getInfo(){
+	return "hello world this is js"
+}
+//calling functions
+//msg();
+//getCube(4);
+document.writeln(getInfo());
+
+//function methods
+//1.apply used to call a function containing this value and a single array of elements
+var arr = [9,2,6,4,1];
+var arr1 = [5,6,7,8]
+var max = Math.max.apply(null,arr);
+var min = Math.min.apply(null,arr);
+arr.push.apply(arr,arr1);//combines the two arrays
+
+document.writeln(max+"<br>");
+document.writeln(min+"<br>");
+document.writeln(arr+"<br>");
+//2.bind()-used to create a new function
+//method 1
+var website = {
+	name:"javatpoint",
+	getName:function(){
+		return this.name;
+	}
+};
+var unboundGetName = website.getName;
+var boundGetName = unboundGetName.bind(website);
+//document.writeln(boundGetName());
+
+//method 2
+this.name = "Oracle";
+var website2 = {
+	name:"javascriptss",
+	getName:function(){
+		return this.name;
+	}
+}
+document.writeln(website2.getName())
+
+//3.call() method - used to call a function contain and this value and the arguments provided individually
+function Employee(id,name){
+	this.id = id;
+	this.name = name;
+}
+function ParmanentEmployee(id,name){
+	Employee.call(this,id,name);
+}
+function TemporaryEmployee(id,name){
+	Employee.call(this,id,name);
+}
+
+//document.writeln(new ParmanentEmployee(101,"kelvin kiptoo").name);
+var p_emp = new ParmanentEmployee(101,"john f kennedy");
+var t_emp = new TemporaryEmployee(102,"george bush");
+document.writeln(p_emp.id +""+p_emp.name+"<br>")
+document.writeln(t_emp.id +""+t_emp.name+"<br>")
+
+//to string() method- method returns to string here string represents source code
+function add(a,b){
+	return a+b;
+}
+document.writeln(add.toString());
+document.writeln(add(20,30).toString());
+//document.writeln(type of add(10,20).toString());
+
+/*
+JAVASCRIPTS OBJECTS:
+OBJECT-an entity having a state and a behavour(properties and methods a car,a ball)
+2 ways of creating an object by literal;by creating instance of object
+*/
+//method 1:By literal
+emp ={
+	id:102,
+	name:"kelvin kiptoo",
+	salary:4000
+}
+document.writeln(emp.id+""+emp.name+""+emp.salary)
+//method 2:Creating instance of an object
+var emp1 = new Object();
+emp1.id = 104;
+emp1.name = "kelvin leornard";
+emp1.salary = 50000;
+document.writeln(emp1.id+""+emp1.name+""+emp1.salary)
+//method 3:object creation
+function emp3(id,name,salary){
+	this.id=id;
+	this.name=name;
+	this.salary=salary;
+}
+e=new emp3(102,"kevin walker",3000);
+document.writeln(e.id+""+e.name+""+e.salary+"<br>")
+
+
+//defining methods in javascript
+function emp4(id,name,salary){
+	this.id=id;
+	this.name=name;
+	this.salary=salary;
+	this.changeName=changeName;
+	function changeName(otherName){
+		this.name=otherName;
+	}
+}
+e4=new emp4(100,"kevin walker2",9000)
+document.writeln(e4.id+""+e4.name+""+e4.salary+"<br>");
+e4.changeName("Noble Dragon");
+document.writeln(e4.id+""+e4.name+""+e4.salary+"<br>")
+
+//1.object.assign() method
+const object1={
+	a:1,
+	b:2,
+	c:3
+}
+const object3={
+	d:4,
+	e:5,
+	f:6
+}
+const object2=Object.assign({c:4,d:5},object1)
+console.log(object2.c,object2.d)
+
+//2.object.create() method
+const people={
+	printIntroduction:function(){
+		//console.log(my name is (this.name));
+
+	}
+}
+const me1=Object.create(people);
+me1.name = "Mary"
+me1.isHuman = true;
+me1.printIntroduction();
+
+
+function fruits(){
+	this.name="cherry";
+	this.season="winter";
+	this.country="USA";
+}
+function apple(){
+	fruits.call(this);
+}
+apple.prototype=Object.create(fruits.prototype)
+const app = new apple();
+console.log(app.name,app.season,app.country);
+console.log(app.season)
+//3.object.definepropertymethod
+//define a new property directly as an object and returns the object
+const object_1={}
+object.defineProperty()
+</script>
+</html>

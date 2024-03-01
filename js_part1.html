@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>javascript</title>
+</head>
+<body>
+<p><strong>Part 1:javascript for beginners</strong></p>
+<p>Current Date and Time:<span id="txt"></span></p>
+
+<p>Digital clock example:<span id="digital"></span></p>
+<form>
+	<p>Please enter a number to find the square root,square and cube root:</p>
+	<input type="number" name="" id="num">
+	<button type="button" onclick="calculate();">submit</button>
+	<p>check squareroot here:<span id="squarer"></span></p>
+	<p>check square:<span id="square"></span></p>
+	<p>check cube:<span id="cube"></span></p>
+	<p>check cuberoot here:<span id="cuber"></span></p>
+</form>
+</body>
+<script type="text/javascript">
+
+	var str = "hello world i am a string"
+	var str = new String("hello world\n")//creating a new instance
+	document.write(str+"<br>");
+	//multiline  comment 
+	/*this is a multiline in 
+	javascript
+	*/
+
+	//local variable vs global variable
+	function abc(){
+		var xx = 10;//local variable is declared and accessed inside a function
+		document.writeln("value of xx is:"+xx+"<br>");
+	}
+	//abc();
+
+	//global varable
+	var data = 200;//declared outside but used in different functions as below
+	function me(){
+		document.writeln(data);
+		window.value = 100;
+	}
+	function me2(){
+		alert(data);
+	}
+	function me3(){
+		alert(window.value)
+
+	}
+	//me();
+	//me2();calling your functions here
+	//me3();
+
+    document.writeln("javascript data types:<br>");
+    /* there are 2 type of data types
+    1.primitive and non-primitive
+    primitive: 
+    string = "hello world"
+    number - 100
+    boolean - true/false
+    null - no value
+    undefined - undefined
+    2.Non primitive
+    objects-Array,RegEx
+
+    */
+	document.write("part.1 creating string methods:<br>")
+	var str2 = "hello javascript am coming for you"
+	var str3 ="code"
+	var str4 = "igniter"
+	var str5 = " with whitespaces "
+	//1.string methods
+	document.write(str2.charAt(4))//should print o
+	document.write(str2.charCodeAt(2))//converts to binary
+	document.write(str3.concat(str4))//concatenates two strings
+	//var ind = str4.LastIndexOf("igniter");
+
+	//document.write(ind)
+	document.write(str3.toUpperCase());//uppercase
+	document.write(str3.toLowerCase());//lowercase
+	document.write(str4.slice(2,5))//print nit;starts past 2 and before 5
+	document.write(str5.trim())//removes leading and trailing whitespaces
+	document.write(str4.split(" "))//splits a given string
+	document.write(str.search("am"))//search for am in string 
+	document.writeln(str5.match("white"))//used to match a string against a regular expression
+	document.write(str5.replace("white","blue"))//replace
+	document.write("<br>")
+	//2.Date objects
+	var date = new Date();
+	var day = new Date();
+	var hour = new Date();
+	document.writeln("Todays date is:"+date.getDate());
+    document.writeln("Todays is on :"+day.getDay());
+    document.writeln("Current hour  is:"+hour.getHours());
+    document.writeln("current month is:"+date.getMonth()+1)
+    document.writeln("Days value:"+day.getUTCDay());
+    document.write("<br>")
+    document.writeln(date.toDateString());//converts toDateString best format
+    document.writeln(date.toJSON());//converts toJson
+    document.writeln("<br>")
+    var today = new Date();
+    document.getElementById("txt").innerHTML = today;
+    document.writeln("creating a digital clock")
+    //window.onload = function(){
+    //	getTime();
+   // }
+    function getTime(){
+    	var today = new Date();
+    	var h = today.getHours();
+    	var m = today.getMinutes();
+    	var s = today.getSeconds();
+    	//adding 0 infront of numbers less than 10
+    	M = checkTime(m);
+    	S = checkTime(s);
+    	document.getElementById("digital").innerHTML = h+":"+M+":"+S
+    	setTimeOut(function(){getTime()},1000);
+
+    }
+    function checkTime(i){
+    	if(i<10){
+    		i="0"+i;
+    	}
+    	return i;
+    }
+//3.JAVASCRIPT MATH
+document.writeln(Math.abs(-4)+"<br>")//prints 4
+document.writeln(Math.abs(-7.8)+"<br>")
+document.writeln(Math.abs(-10)+"<br>")//10
+
+document.writeln(Math.asin(30)+"<br>")
+document.writeln(Math.acos(30)+"<br>")
+document.writeln(Math.atan(30)+"<br>")
+document.writeln(Math.cbrt(27)+"<br>")//cuberoot
+document.writeln(Math.ceil(7.2)+"<br>")//8
+document.writeln(Math.ceil(0.2)+"<br>")
+document.writeln(Math.exp(2)+"<br>")
+document.writeln(Math.exp(5)+"<br>")
+document.writeln(Math.floor(-4)+"<br>")
+document.writeln(Math.floor(7.2)+"<br>")
+document.writeln("logarithm of 10:"+Math.log(100)+"<br>")
+document.writeln("maximum value of -4,2,0.3:"+Math.max(-4,2,0.3)+"<br>")
+document.writeln("minimum value of -4,2,0.3:"+Math.min(-4,2,0.3)+"<br>")
+document.writeln("power of:"+Math.pow(2,3)+"<br>")
+document.writeln("squareroot of:"+Math.sqrt(100)+"<br>")
+
+function calculate(){
+	var x = document.getElementById("num").value;
+	document.getElementById("squarer").innerHTML = Math.sqrt(x);
+	document.getElementById("square").innerHTML = Math.pow(x,2);
+	document.getElementById("cube").innerHTML = Math.pow(x,3);
+	document.getElementById("cuber").innerHTML = Math.cbrt(x);
+}
+//4.logical operators
+//logical and : both must be true to be true
+function all(){
+	document.writeln(10 == 20) && (20 == 20);//print false since both must be true to be true
+	document.writeln(10 == 20) || (20 == 20);//print false since one must be true to be true
+    document.writeln(10 != 20);//print true since 10 is not equal to 20
+}
+all();
+ /*control statements
+   if else
+   switch
+   loops:for loop,while loop,
+
+ */
+ // if else
+ var c = 10;
+ if(c > 10){
+ 	document.writeln("value of c is greater than 10 since it is:"+c );
+
+ }else if(c < 10){
+ 	document.writeln("value of c is less than 10 since it is:"+c );
+ }else if(c == 10){
+ 	document.writeln("value of c is equal to 10 since it is:"+c );
+ }
+ else{
+ 	document.writeln("value of c is unknown ");
+ }
+//switch
+var grade = 'B';
+var result;
+switch(grade){
+	case 'A':
+	result = 'A grade';
+	break;
+	case 'B':
+	result = 'B grade';
+	break;
+	case 'C':
+	result = 'C grade';
+	break;
+	case 'D':
+	result = 'D grade';
+	break;
+	default:
+	result = 'No grade';
+}
+document.writeln(result);
+//for loop
+for(i=0;i<5;i++){
+	document.writeln(i+"<br>");
+}
+//while loop
+var i=0;
+while(i<10){
+	document.writeln(i+"<br>");
+	i++;
+}
+//do while
+var i = 10;
+do{
+	document.writeln(i+"<br>");
+	i++;
+}while(i<=5);
+
+
+</script>
+</html>

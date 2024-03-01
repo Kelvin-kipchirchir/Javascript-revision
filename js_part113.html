@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple snake game in HTML</title>
+	<style type="text/css">
+     	#img{
+     		height: 100px;
+     		width: 100px;
+     		left: 400;
+     		top: 100;
+     		position:absolute;
+
+     	}
+     	body{
+     		background-color: grey;
+     	}
+     </style>
+</head>
+<body>
+   <p>welcome to the Animation word</p>
+   <form>
+		<img id="img" src="dragon.png"><br>
+		<center>
+			<p>click the button below to move image right</p>
+			<input type="button" value="start" onclick="starter();">
+			<input type="button" value="reset" onclick="reSet();">
+			<div id="msg">
+				
+			</div>
+		</center>
+	</form>
+</body>
+<script type="text/javascript">
+	var dir_h ='right';
+	var dir_v = 'down';
+	
+	function reSet(){
+		clearTimeout(my_time);
+		document.getElementById('img').style.left = "500px";
+		document.getElementById('img').style.top = "100px";
+		document.getElementById('msg').innerHTML = "";
+	}
+	function disp(){
+		var step = 2;
+		var y = document.getElementById('img').offsetTop;
+		var x = document.getElementById('img').offsetLeft;
+		if (x >= 900) {
+			dir_h = 'left';
+		}
+		if (x <= 400) {
+			dir_h = 'right';
+		}
+		if (dir_h == 'right') {x = x + step;}
+		else{x = x - step;}
+		if (y >= 500) {
+			dir_v = 'up';
+		}
+		if (y <= 100) {
+			dir_v = 'down';
+		}
+
+		if (dir_v == 'down') {y= y + step;}
+		else{y = y - step};
+
+		document.getElementById('img').style.top = y + "px";//vertical movement
+		document.getElementById('img').style.left = x + "px";//horizontal movement
+
+	}
+	function starter(){
+		disp();
+		var y = document.getElementById('img').offsetTop;
+		var x = document.getElementById('img').offsetLeft;
+		document.getElementById('msg').innerHTML = "X: " + x + " Y: " + y;
+		my_time = setTimeout('starter()',10);
+	}
+</script>
+</html>

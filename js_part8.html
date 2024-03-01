@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event bubling or event capturing</title>
+	<style>
+		div{
+			background-color: lightblue;
+			border: 2px solid red;
+			font-size: 25px;
+			text-align: center;
+
+		}
+		span{
+			border: 2px solid blue;
+		}
+	</style>
+</head>
+<body>
+<!-- 
+	On HTML DOM,Bubbling/capturing are two ways of event propergation;
+	-we have a div element with paragraph elements inside it.we are applying the "click" event to both using addEventListener() method and ask ourselves which event will be handled first.
+In Bubbling event of paragraph element is handled first then the div element is handled.This means that in bubbling,the inner elements events handled first then outermost events will be handled.
+
+Capturing-the event of div element is handled first then the inner most element will be handled.in capturing the outer elements events will be handled first
+addEventListener(event,function,use(capture))
+can specify propergation the capture paragraph
+set to false-(default)->event uses the bubbling propagation
+set to true->capturing propagations takes place
+-->
+<!--
+on double clicking the span element of first div element,then the span element event is handled first then the div element
+(bubbling)
+on double clicking the span element of the second div element,then the div elements events is handled first then the span element(capturing)
+-->
+<h1>bubbling</h1>
+<div id="d1">
+	This is a div element<br><br>
+	<span id="s1">This is a span element</span>
+</div>
+<h1>Capturing</h1>
+<div id="d2">
+	This is a div element
+	<span id="s2">This is a span element</span>
+</div>
+<script type="text/javascript">
+	document.getElementById("d1").addEventListener("dblclick",function(){
+		alert("you have double click on div element")
+	},false);
+	document.getElementById("s2").addEventListener("dblclick",function(){
+		alert("you have double click the span element")
+	},false);
+	document.getElementById("d2").addEventListener("dblclick",function(){
+		alert("you have double click the div element")
+	},true);
+	document.getElementById("s2").addEventListener("dblclick",function(){
+		alert("you have double click the span element")
+	});
+</script>
+</body>
+</html>

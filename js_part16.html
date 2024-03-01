@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>defer methods</title>
+    <script src="myscript.js" defer></script>
+    <link rel="canonical"  href="https://www.dragonempire.com/">
+    <script type="text/javascript">
+    	function page_redirect(){
+    		window.location = "https://www.javatpoint.com"
+    	}
+    	function page_auto_redirect(){
+    		window.location = "https://www.javatpoint.com/"
+    	}
+
+    	//setTimeout("page_auto_redirect()",5000);
+    	function page_replace(){
+    		location.replace("https://www.dragonempire.com")
+    	}
+    </script>
+</head>
+<body>
+<h2>Javascript defer methods</h2>
+<p>used to indicate the script is excecuted after the document has been parsed.works only with external scripts.works only when specifying the src attribute in script tag:it declares that script will not create any content so the browser can continue parsing the rest of the page.Attribute tells the browser to execute the script </p>
+<!-- 
+
+	syntax:<script defer>
+-->
+<div>
+	<h1>Dragon empire.com</h1>
+	<h3>A defer Attribute</h3>
+</div>
+<!-- 
+javascript redirect
+mechanism for sending search engines and users on a different url from the original one.redircted page can also be on the same server or different server;can also be on same website or differrnt one
+when we click url we redirect to another url;happens due to page redirection
+-different from refreshing a web page 
+-search engines do not analyze the javascript to check the redirection.its required to notify the search engine(SEO) about url forwarding,we need to add the rel="cannonical" tag within the head sectionof the web page 
+There are several methods used to perform page redirection such as
+->Location.href()
+->Location.replace()
+->page redirection is easy in js
+window.location and windowlocation.href()
+1.window.location()
+property of window object.there are several methods to redirect the web page.Almost all methods are related to window.local obj
+can be used for getting the address of the current url or the web address
+window.location can be written without adding window preffix
+2.Location.replace()
+commonly used window.location object used for replacing original document with new one.
+using this method we can pass new url and then perform an HTTP redirect.it is different from href as it removes the current document from document history 
+-hence not possible to navigate back to original document
+syntax::window.Location.replace("new url")
+example
+example of page redirection on the client-side,to redirect a web page we simply have to write a statement
+->a buttomn that redirects visitors to javatpoint.com
+
+->we can use SetTimeOut() method which automatically redirects the user to the appropriate link.It would take time to load a new page 
+SetTimeOut() method executes another function after a given interval
+-->
+<h3>An example of page redirection</h3>
+<p>click button to see the effects</p>
+<form>
+	<input type="button" value="redirect" onclick="page_redirect()">
+</form>
+<h3>After 5 seconds you will be redirected to another page</h3>
+<p>wait for 5 seconds to see the effects</p>
+<h3>Another example is using replace method:</h3>
+<p>we are using replace() method() for page redirection,the replace method() will replace current documents<br>
+ with new documents html button that is to be clicked to replace document with new one </p>
+
+ <h3>An example of redirecting a page using replace() method</h3>
+ <p>using the replace () click button below</p>
+ <button onclick="page_replace();">replace</button>
+</body>
+</html>

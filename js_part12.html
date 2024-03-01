@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS onResize event</title>
+	<h2>Js on size </h2>
+</head>
+<body onresize="fun();">
+	<h3>This is an example of using onresize attribute</h3>
+	<p>Try resize the browser window to see the effects</p>
+	<p id="para"></p>
+	<p>You have resized the window
+     <span id="s1">0</span>
+	</p>
+<!--
+generally occurs when the window has been resized to get the size of the window one can use
+1)window.outerWidth
+2)window.outerHeight
+can use other properties such as 
+a)inner.width.clientwidth offsetWidth
+b)inner.height clientheight offsetHeight
+using resize event in html
+<element onresize = "func()">
+	in js
+object.onresize = function(){
+	myscript
+//using addEventListener("resize",myscript)
+}
+example of using HTML onresize attribute we use the window.outerwidth and window.outerHeight events on js to get height and width of the window,when the user resizes the window,the updated width and height of the window will be displaced in the screen
+-it will also display how many times the user tries to resize the window
+-when we change the height the updated height will change the height of window
+-when we change the width of window the updated width will change accordingly
+
+-->
+
+</body>
+<script type="text/javascript">
+	var i=0;
+	function fun(){
+		var res = "width ="+window.outerWidth+"<br>"+"Height="+window.outerHeight;
+		document.getElementById("s1").innerHTML = res;
+		var res1 = i+=1;
+		document.getElementById("s1").innerHTML = res1;
+
+
+	}
+	//method 2:using js to resize
+document.getElementsByTagName("body")[0].onresize = function(){
+	fun()//this will call the above function
+}
+//method 3:using addEventListener() method
+window.addEventListener("resize",fun)
+//then call the above fun function
+</script>
+</html>

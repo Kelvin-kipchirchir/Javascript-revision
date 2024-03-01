@@ -1,0 +1,194 @@
++<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript Cookies</title>
+	<strong>Part6:Javascript cookies</strong>
+</head>
+<body>
+<input type="button" name="" value="setCookie" onclick="setCookie()">
+<input type="button" name="" value="getCookie" onclick="getCookie() ">
+</br>
+<p>Doing some real cooking</p>
+<select id="color" onchange="display()">
+	<option value="select color">select color</option>
+	<option value="yellow">Yellow</option>
+	<option value="green">green</option>
+	<option value="red">red</option>
+</select>
+</br>
+<h3>Cookie Attributes</h3>
+<input type="button" value="setCookie_att" onclick="setCookie_att()">
+<input type="button" value="getCookie_att" onclick="getCookie_att()">
+<br>
+<h3>Cookie with multi-Name value pairs</h3>
+Name:<input type="text" id="name"><br>
+Email:<input type="email" id="email"><br>
+Course:<input type="text" id="course"><br>
+<input type="button" value="setCookies" onclick="setCookies()">
+<input type="button" value="getCookies" onclick="getCookies()">
+</br>
+<h3>Setting,getting and deleting multiple cookies in js</h3>
+<input type="button" value="set_Cookies" onclick="set_Cookies()">
+<input type="button" value="get_Cookies" onclick="get_Cookies()">
+<input type="button" value="delete_Cookies" onclick="delete_Cookies()"><br>
+<input type="button" value="set_Cookies2" onclick="set_Cookies2()">
+<input type="button" value="get_Cookies2" onclick="get_Cookies2()">
+<input type="button" value="delete_Cookies2" onclick="delete_Cookies2()"><br>
+<input type="button" value="display_all_Cookies" onclick="diaplayCookies()">
+</body>
+<script type="text/javascript">
+	document.writeln("welcome to javascript")
+	/*      JS COOKIES
+	A cookie is an amount of information that persist between a server side and client-side.A web browser stores this information at the time of browsing
+	cookies contain the information as a string generally in the form of name value pair separated by semi-colon
+	HOW COOKIES WORK
+	When a user sends a request to the server,each of the request is treated as a new request sent by a different browser
+	so,to recognize the old user we need to add the cookie with response from server
+	browser at client-side
+
+	*/
+	//create cookie in js for js we can create read,update and delete a cookie using document.cookie property
+function setCookie(){
+	document.cookie = "username = Noble Dragon"
+}
+function getCookie(){
+	if(document.cookie.length!=0){
+		//1.displaying as a whole document
+		alert(document.cookie)
+
+		var array = document.cookie.split("=");
+		//1.display cookie in value pair property
+		alert("Name = "+array[0]+"."+"value = "+array[1]);
+		
+	}else{
+		alert("cookie not available")
+	}
+}
+function display(){
+	var value = document.getElementById("color").value;
+	if(value != "select color"){
+		document.bgColor = value;
+		document.cookie = "color = "+value;
+	}
+}
+window.onload = function(){
+	if(document.cookie.length !=0){
+		var array = document.cookie.split("=");
+		document.getElementById("color").value = array[1];
+		document.bgColor = array[1];
+	}
+}
+/* 
+cookie attributes
+1.expires-it maintains the state of cookie upto a specified date or time
+2.max age-maintains state of a cookie upto the specified time.Here time is given in seconds
+3.Path-expands the scope of cookie to all the pages of a website
+4.domain-used to specify domain for which cookie is valid
+5.expires-way to create persistent cookie where date and time are declared that represents active period of cookie
+*/
+function setCookie_att(){
+	document.cookie = "Username = Kevin Walker,expires = sun,28 May 2023 12:00:00 UTC,max-age = (60*60*24*365)"+"."
+}
+function getCookie_att(){
+	if(document.cookie.length!=0){
+		var array = document.cookie.split("=");
+		alert("Name = "+array[0]+"."+"Value = "+array[1]);
+	}else{
+		alert("cookie not available")
+	}
+}
+/* 
+cookie with multi name value pairs
+-to store more than one name-value pair we can use following approach
+1)serialize the custom object in a json string,parse it then store in a cookie
+2)for each name value pair use a separate cookie
+*/
+function setCookies(){
+	//declaring a 3 key-value pair
+	var info = "Name ="+document.getElementById("name").value + "Email = "+document.getElementById("email").value+
+	"Course ="+document.getElementById("course").value;
+	//providing all 3 key-value pairs in a single cookie
+	document.cookie = info;
+	//alternatively using json method
+	var obj = {}//create custom object
+	obj.name = document.getElementById("name").value;
+	obj.email = document.getElementById("email").value;
+	obj.course = document.getElementById("course").value;
+	//converting js object to JSON String
+	var JSONString = JSON.stringify(obj);
+	document.cookie = JSONString; 
+
+}
+function getCookies(){
+	if(document.cookie.length != 0){
+		alert(document.cookie)//alering using the normal operation
+		//converting JSON string to JSON object
+		var obj = JSON.parse(document.cookie)
+		alert("Name="+obj.name+""+"Email="+obj.email+""+"Course="+obj.course);//alerting using the json format
+	}else{
+		alert("cookie not available for now")
+	}
+}
+/*Deleting cookies in javascript
+1.cookies can be deleted using expire attribute
+2.using the max-age attribute
+3.using web broswe*/
+function set_cookie(){
+	document.cookie = "name = Dragon;expires = sun,28 May 2023 12:00:00 UTC"//using expire once the date has reached cookie will be deleted
+	document.cookie = "username = Walker;max-age = 0"
+}
+function get_cookie(){
+	if (document.cookie.length !=0) {
+		alert(document.cookie)
+	}else{
+		alert("cookie not available")
+	}
+}
+//setting and deleting multiple cookies
+function set_Cookies(){
+	document.cookie = "name = Dragon"
+	cookie1 = document.cookie;
+}
+function set_Cookies2(){
+	document.cookie = "name = Empire"
+	cookie2 = document.cookie;
+}
+function get_Cookies(){
+	if (cookie1.length !=0){
+		alert(cookie1)
+	}else{
+		alert("cookie not available")
+	}
+
+}
+function get_Cookies2(){
+	if (cookie2.length != 0){
+		alert(cookie2)
+	}else{
+		alert("cookie 2 not available")
+	}
+}
+function delete_Cookies(){
+	document.cookie = cookie1 + "max-age = 0";
+	cookie1 = document.cookie
+	alert("cookie is deleted")
+}
+function delete_Cookies2(){
+	document.cookie = cookie2 + "max-age = 0";
+	cookie2 = document.cookie;
+	alert("cookie deleted successfully")
+}
+function diaplayCookies(){
+	if (cookie1 !=0 && cookie2 !=0){
+		alert(cookie1 + ""+cookie2);
+	}else if(cookie1 != 0){
+		alert("cookie1")
+	}else if(cookie2 !=0){
+		alert("cookie2")
+	}else{
+		alert("no cookie is available for now")
+	}
+}
+//last method is to delete cookies in the browser
+</script>
+</html>

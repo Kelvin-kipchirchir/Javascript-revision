@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dates</title>
+	<h2>Date Difference in js </h2>
+</head>
+<body>
+<p>How to calculate the difference between two dates by using js.<br>
+	Using the right methods,date object is required to calculate the difference between dates in js.<br>
+js date object can be used to get a year month or a day</p>
+<p>calculating the differnce between two dates </p>
+
+<h5>Example 1</h5>
+<p>getting the nunber of days between the specified 2dates.we are applying an option and calculate the difference</p>
+<p>we define 2 dates using new dates(),then calculate the time difference betwwen both specified dates by using in built getTime()<br>
+then calculate no of days by dividing the difference between both dates by no of milliseconds<br>
+</p>
+<p><strong>Javascript date format</strong></p>
+<p>can be used to get a year,month and day and can be used to display timer on web page with<br> help of js date object<br>there are many types of date format<br> ISO Date-International standard:2021-12-24(yyyy-mm-dd) while short date 24/12/2021<br>
+long date-Aug 01 2021 or 01 Aug 2021</p>
+<h3>An example of an iso date</h3>
+<p id="para"></p>
+
+
+<script type="text/javascript">
+	/*
+	var d stores first date ,d2 second date,var diff stores diff between time and day diff stores difference between dates*/
+	document.write("example 1")
+	var d1 = new Date("06/17/2023")
+	var d2 = new Date("07/17/2023")
+	var diff = d2.getTime()-d1.getTime();
+	var daydiff = diff/(1000*60*60*24)
+	document.write("Total number of days between:"+d1+"and"+d2+"is"+daydiff+"days"+"<br>")
+	/*in the example of calculating diference between two dates in a number of years.This equation calculates the number of years passed since 10-03-1869 to present*/
+	var y1 = new Date("10/02/1969")
+	var y2 = new Date();
+	var y_diff = y2.getTime()-y1.getTime();
+	var year_diff = (y_diff/31536000000).toFixed(0);
+	document.write("Total number of years since<br>2nd october 1969 to now:"+year_diff+"<br>")
+
+	document.write("an example of an iso date:")
+    let val = new Date("2021-12-24")
+    document.getElementById("para").innerHTML = val;
+    /*
+    other formats include
+    let val = new Date("2021-12-24")
+    let val = new Date("2021-12")
+    let val = new Date("2021")*/
+    //specify the date with added hours,minutes and seconds (yyyy-mm-dd-DDTH-MM-SSZ) date and time separated with letter T and letter Z we get diff results.in diffferent browser we get diff results
+    let val_d = new Date("2020-08-01 T 07:15:002")
+    /*
+    javascript short date
+    use format mm/dd/yyyy */
+    let val_sh = new Date("12/24/2021")
+    document.write(val_sh+"<br>")
+    /*
+    long date
+    mmm-dd-yyyy is a format used to write long dates.The month of a date can be writen in any order and its allowed to write a month in any abbreviation ie sep
+    */
+    let val_l = new Date("Aug 01 2021")
+    document.write(val_l+"<br>")
+
+    /*date parse method()
+    used to parse specified date and string and returns the number of milliseconds between specified dates
+    -strings does not have valid values and if not recognized method return NaN
+    -counting of milliseconds has 2 specified dates help us find  no of days moths etc*/
+
+    //date.parse(datestring)
+
+    /*contains a single perimeter string that represents the date method returns a number that rep no of milliseconds
+    /counting eg midnight jan 1 1970-midnight Dec 24 2021
+    */
+    var d_1 = "December 24,2021"
+    var m_1 = Date.parse(d_1)
+    document.write("the number of millisecinds betweem <br>"+d_1+"<br>"+"and"+"<br> January 1 1970 <br> is:"+m_1+"<br>")
+
+    document.write("Example 2:<br>")
+    //parsing a invalid date to see
+    var d_2 = "December 39 3032"
+    var m_2 = Date.parse(d_2)
+    document.write("the number of milliseconds between <br>"+d_2+"<br>"+"and"+"<br> january 1 1970 <br> is:"+m_2+"<br>")//prints is NAN
+
+
+
+</script>
+</body>
+</html>

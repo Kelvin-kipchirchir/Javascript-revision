@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Browser object model</title>
+</head>
+<body>
+	<p><strong>Part3:javascript Browser Object Model(BOM)</strong></p>
+	<p>click below to show an alert function</p>
+	<input type="button" value="click" name="alert button" onclick="msg();">
+	<p>Click below to show a confirm dialog</p>
+	<input type="button" name="delete" value="delete" onclick="conf();">
+	<p>Click below to ask a request</p>
+	<input type="button" name="ask" value="ask" onclick="promp();">
+	<p>Click below to open a browser</p>
+	<input type="button" name="ask" value="ask" onclick="open();">
+	<p>Click below to check the timer</p>
+	<input type="button" name="timer" value="timer" onclick="timer();">
+</body>
+	<script type="text/javascript">
+		//BOM-Is used to interact with the browser.Default object of the browser is a window
+		/*
+		1.window object
+		represents a window in browser an object of window is automatically created by browser
+		methods include
+		alert()-displays the alert box containing message with ok
+		confirm()-displays a dialog box containing message ok and cancel button
+		prompt()-display dialog box to get input from user
+		open()-opens new window
+		close()-closes current window
+		settimeout()-performs actions after specified time like calling function
+		*/
+		//1.alert()
+		function msg(){
+			alert("Hello user this is an alert message")
+		}
+
+		//2.confirm
+		function conf(){
+			var v=confirm("Are you sure");
+			if(v==true){
+				alert("OK deleted successfully.....")
+			}else{
+				alert("you have aborted......")
+			}
+		}
+		//3.prompt
+		function promp(){
+			var p=prompt("who are you")
+			alert("my name is:"+p)
+		}
+		//4.open
+		function open(){
+			open("https://www.dragonempire.com")
+		}
+		//5.timeout
+		function timer(){
+			setTimeout(
+				function(){
+					alert("Welcome home dragon")},2000);
+		}
+		/*2..History objects
+		represents an array of urls visited by the user.Using this u can load previous,forward or any particular page
+		methods include
+		forward(),back() or go()
+		*/
+		//history.back()
+		//history.forward()
+		//history.go(2)
+		//history.go(-2)
+
+		/*3...Navigation objects
+		used for browser detection can be used for browser information ie appName,appCodeName,UserAgent
+		*/
+		document.writeln("<br> navigator.appCodeName:"+navigator.appCodeName)
+		document.writeln("<br> navigator.appName:"+navigator.appName)
+		document.writeln("<br> navigator.appVersion:"+navigator.appVersion)
+		document.writeln("<br> navigator.cookieEnabled:"+navigator.cookieEnabled)
+		document.writeln("<br> navigator.UserAgent:"+navigator.userAgent)
+		document.writeln("<br> navigator.platform:"+navigator.platform)
+		document.writeln("<br> navigator.online:"+navigator.onLine)
+		/*...screen object
+		hold information about the browsers screen
+		displays width,height,colordepth,pixel
+
+		*/
+		document.writeln("<br> screen width:"+screen.width)
+		document.writeln("<br> screen height:"+screen.height)
+		document.writeln("<br> screen availHeight:"+screen.availHeight)
+		document.writeln("<br> screen availWidth:"+screen.availWidth)
+		document.writeln("<br> screen colordepth:"+screen.colorDepth)
+		document.writeln("<br> screen Pixeldepth:"+screen.pixelDepth)
+
+
+		
+	</script>
+
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript classes</title>
+	<strong>Part5:Introducing javascript classes</strong>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	                        //1....JAVASCRIPT CLASSES
+	/*classes are special type of functions.They can define classes just like function declaration and functionexpressions
+	class syntax contains two components class declaration and class expressions*/
+	//class declaration-class keyword is used to declare  a class with a particular name It MUST ALWAYS START WITH UPPERCASE
+	class Employee{//declaring the class
+		constructor(id,name){//initializing objects
+			this.id = id;
+			this.name = name;
+		}
+		details(){//declaring methods
+         document.writeln(this.id+""+this.name+"<br>");
+		}
+	}
+	var e1=new Employee(101,"kevin walker");//passing objects to the variables
+	var e2=new Employee(102,"dragon empire");
+	e1.details();//calling our methods
+	e2.details();
+
+	/* major difference between function and object:unlike function declaration class declaration is not part of javascript hoisting.so it requires us to declare classes before invoking it*/
+
+	/*2...class expression 
+	here is not mandatory to assign the name of the class.so the class expression allows us to fetch classname
+    example
+	*/
+	var emp = class {
+		constructor(id,name){
+			this.id = id;
+			this.name = name;
+		}
+	}
+	document.writeln(emp.name)
+	//unlike class declaration,the class expression allows us to re-declare the same class so if we try to redeclare class more than one time throws an error
+	var emp1=class{
+		constructor(id,name){
+			this.id = id;
+			this.name = name;
+		}
+		detail(){
+			document.writeln(this.id+""+this.name+"<br>");
+		}
+	}
+	var e11 = new emp1(101,"mike tyson")
+	var e12 = new emp1(102,"mohammed Ali")
+	e11.detail()
+	e12.detail()
+	//re-declaring class
+	var emp1 = class{
+		//initializing object
+		constructor(id,name){
+			this.id = id;
+			this.name = name;
+		}
+		detail(){
+			document.writeln(this.id+""+this.name+"<br>");
+		}
+	}
+	var e11 = new emp1(103,"jason statum")
+	var e12 = new emp1(104,"nelson mandela")
+	e11.detail();
+	e12.detail();
+
+	var empl3=class Employees{
+		constructor(id,name){
+			this.id = id
+			this.name = name
+		}
+	}
+	document.writeln(empl3.name)
+	//document.writeln(Employees.name)//produces error in the console "reference error:Employees is not defined"
+	                  //2.....JAVASCRIPT OBJECTS
+
+	 //object is an entity having a state and a behavour(properties and methods) eg cars,bikes pens etc
+	 //JS is an object-based language so everything is an object in js
+	 /*3 ways to create objects in javascript
+	 1.By object literal
+	 2.By creating instance of object directly
+	 3.using object constructor(new keyword)
+
+	 */    
+	 /* 
+	   3.........JAVASCRIPT PROTOTYPE OBJECT
+	 js is a prototype-based language that facilitates the object to acquire properties and feature from one another.Each object has a prototype object
+	 in js whenever a function is create the prototype is added to that function 
+     Syntax->ClassName.prototype.methodName
+     prototype chaining
+     in js each object contains a prototype object that acquires prototypes and methods from
+     example 
+
+	 */
+	 function Employee1(firstname,lastname){
+	 	this.firstname = firstname;
+	 	this.lastname = lastname
+	 }
+	 Employee1.prototype.fullname = function(){
+	 	return this.firstname +""+this.lastname
+	 }
+	 Employee1.prototype.company = "Dragon empire"
+	 var Employee11 = new Employee1("lord","Egerton")
+	 var Employee12 = new Employee1("sir","voldermolt")
+	 document.writeln(Employee11.fullname()+Employee11.company+"<br>"+Employee12.fullname()+Employee12.company)
+
+	 /*4........JS CONSTRUCTION METHODS
+      special type of method used to initialize and create an object called when numbers allocated to an object
+      -condtructor methods are used to declare a constructor method,
+      js allows us to use parent class constructor through super keyword
+	 */
+	 class Empire{
+	 	constructor(){
+	 		this.id = 102;
+	 		this.name = "the wizard"
+	 	}
+	 }
+	 var Emp = new Empire()
+	 document.writeln("Empire namë:"+Emp.id+""+Emp.name+"<br>")
+
+	 //example 2
+	 class Companyname{
+	 	constructor(){
+	 		this.companyname = "dragon Empire"
+	 	}
+	 }
+	 class Employed extends Companyname{
+	 	constructor(id,name){
+	 		super()
+	 		this.id = id
+	 		this.name = name
+	 	}
+	 }
+	 var Empl1 = new Employed(100,"kevin walker")
+	 document.writeln(Empl1.id+""+Empl1.name+""+Empl1.companyname+"<br>")
+
+/*5...............JS STATIC METHOD
+static method belongd to the class instead of an instance of class
+static keyword is used to declare static method
+static method can be any name class can contain more than one static method
+similar static methods,the last one is always invoked
+-static methods are used to create utility functions.
+use this keyword to create a static method within another static method*/
+//example
+class Test{
+	static display(){
+		return "static method invoked"
+	}
+}
+document.writeln("calling our method"+Test.display()+"<br>")
+class Testagain{
+	static display(){
+		return "invoking a static method"
+	}
+	static display2(){
+		return "invoking a second static method"
+	}
+}
+document.writeln(Testagain.display()+""+Testagain.display2()+"<br>")
+//invoking a static method within the constructor
+class Testing{
+	constructor(){
+		document.writeln(Testing.display()+"<br>")
+		document.writeln(this.constructor.display())
+	}
+	static display(){
+		return "static method is invoked"
+	}
+}
+var t = new Testing()//output is two strings of static method is invoked
+
+//invoking a static method within a non-static method
+class LastTest{
+	static display(){
+		return "last static method is invoked"
+	}
+	show(){
+		document.writeln(LastTest.display()+"<br>")
+	}
+}
+var tt = new LastTest()
+tt.show()
+
+/*               ENCAPSULATION
+is the process of binding the data(variables) with the function acting on that data
+-it allows us to control the data and variables.
+-achievable by using var keyword to make data member primary;uses getters and setters methods
+-Encapsulation allows us to handle the object using the following properties;
+-Read/write-use setter method to write data and getter to read the data
+-Read only-use getter methods only
+-write-setter method only
+*/
+//example
+class Student{
+	constructor(){
+		var id
+		var name
+		var marks
+	}
+	setId(id){
+		this.id = id
+	}
+	setName(name){
+        this.name = name
+	}
+	setMarks(marks){
+		//can validate our methods
+		if(marks<0 || marks>100){
+			alert("invalid marks")
+		}else{
+			this.marks = marks
+		}
+	}
+	getId(){
+		return this.id
+	}
+	getName(){
+		return this.name
+	}
+	getMarks(){
+		return this.marks
+	}
+
+}
+var std = new Student()
+std.setId(200)
+std.setName("kevin walker")
+std.setMarks(80)
+document.writeln("calling our getters to display infor"+"<br>")
+document.writeln(std.getId()+""+std.getName()+""+std.getMarks()+"<br>")
+//encapsulation prototype-based approach
+function Students(name,marks){
+	var s_name = name
+	var s_marks = marks
+	Object.defineProperty(this,"name",{
+		get:function(){
+			return s_name
+		},
+		set:function(s_name){
+			this.s_name = s_name
+		}
+	});
+	Object.defineProperty(this,"marks",{
+		get:function(){
+			return s_marks
+		},
+		set:function(s_marks){
+			this.s_marks = s_marks
+		}
+	})
+}
+var stdd = new Students("Johny",120)
+document.writeln(stdd.name+""+stdd.marks+"<br>")
+
+/*
+               INHERITANCE
+ -Mechanism that allows us to create new classes on the basis of already existing classes.It provides flexibility to child classes
+ extends keyword is used to create a child class on the basis of the parent class
+ -it maintains an is a relationship
+*/
+//example of an inbuilt method date
+class Moment extends Date{
+	constructor(){
+		super();
+	}
+}
+var m = new Moment();
+document.writeln("Current date:")
+document.writeln(m.getDate()+"--"+m.getMonth()+"--"+m.getFullYear()+"<br>")
+
+//Declaring a sub-class that extends the properties of its parent class
+class Bike{
+	constructor(){
+		this.company = "Honda"
+	}
+}
+class Vehicle extends Bike{
+	constructor(name,price){
+		super();
+		this.name = name
+		this.price = price
+	}
+}
+var v = new Vehicle("mustang",7000)
+document.writeln(v.company+" "+v.name+" "+v.price+"<br>")
+
+//javascript extends example a prototype based approach -> performs a prototype based inheritance need to use classs and extends keyword
+function Bikes(company){
+this.company = company
+}
+Bikes.prototype.getCompany = function(){
+	return this.company
+}
+function Vehicles(name,price){
+	this.name = name
+	this.price = price
+}
+var bike = new Bikes("Honda sport")
+Vehicles.prototype = bike;
+//here Bikes is treated as a parent of the vehicle
+var veh = new Vehicles("ferrari",3000)
+document.writeln(veh.getCompany()+" "+veh.name+" "+veh.price+"<br>")
+
+/*     POLYMORPHISM
+core concept of an object oriented paradim that provides a way to perform a single action in different forms
+example is a child class invoking the parent class
+*/
+class A{
+	display(){
+		document.writeln("A is invoked<br>")
+	}
+}
+class B extends A{
+
+}
+var b = new B();
+b.display();//B is a child class of a so
+//example 2:child and parent class contains the same method
+
+class AA{
+	display(){
+		document.writeln("A is invoked :::<br>")
+	}
+}
+class BB extends AA{
+	display(){
+		document.writeln("BB is invoked :::<br>")
+	}
+}
+var a = [new AA(),new BB()]
+a.forEach(function(msg){
+	msg.display()
+}) 
+
+//prototype-based approach
+function AAA(){}
+AAA.prototype.display = function(){
+	return "AAA is invoked"
+}
+function BBB(){}
+BBB.prototype = Object.create(A.prototype)
+var aa =  [new AAA(),new BBB()]
+aa.forEach(function(msg){
+	document.writeln(msg.display()+"<br>")
+})
+
+/*
+               ABSTRACTION
+  is a way of hidding the implementation details and showing only the functionalities to the users 
+  ->we cannot create an instance of Abstraction 
+  ->reduces the duplication of codes
+*/
+/*
+function M_Vehicle(){
+	this.vehicleName = vehicleName;
+	throw newError("You cannot create an instance of Abstract class")
+}
+M_Vehicle.prototype.display = function(){
+	return this.vehicleName;
+}
+var vehi = new M_Vehicle();//this will cause an error  */
+
+//	to achieve absstraction can do the following
+function Vehicle_s(){
+	this.vehicleName = "Vehicle Name";
+	throw new Error("you cannot create an instance of Abstract class")
+}
+Vehicle_s.prototype.display = function(){
+	return "Vehicle is:"+this.vehicleName;
+}
+//creating a constructor function to 
+function Bike_s(vehicleName){
+	this.vehicleName = vehicleName
+}
+//create object without using the function constructor
+Bike_s.prototype = Object.create(Vehicle_s.prototype)
+var bik = new Bike_s("Honda 700")
+document.writeln(bik.display())
+</script>
+</html>

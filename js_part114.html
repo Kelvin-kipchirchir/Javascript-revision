@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple snake game in HTML</title>
+	<style type="text/css">
+     	#img{
+     		height: 100px;
+     		width: 100px;
+     		left: 400;
+     		top: 100;
+     		position:absolute;
+
+     	}
+     	body{
+     		background-color: grey;
+     	}
+     </style>
+</head>
+<body>
+   <p>welcome to the Animation word using keys</p>
+   <form>
+		<img id="img" src="dragon.png"><br>
+		<center>
+			<p>click the button below to move image right</p>
+			<input type="button" value="start" onclick="starter();">
+			<input type="button" value="reset" onclick="reSet();">
+			<div id="msg">
+				
+			</div>
+		</center>
+	</form>
+</body>
+<script type="text/javascript">
+	var dir_h ='right';
+	var dir_v = 'down';
+	
+	function reSet(){
+		clearTimeout(my_time);
+		document.getElementById('img').style.left = "500px";
+		document.getElementById('img').style.top = "100px";
+		document.getElementById('msg').innerHTML = "";
+	}
+
+	function disp(dir){
+		var step = 6;
+		var y = document.getElementById('img').offsetTop;
+		var x = document.getElementById('img').offsetLeft;
+
+		switch (dir){
+			case 'D':
+			if ( y <500) { y = y + step;}
+			break;
+
+			case 'L':
+			if ( x >100 ) { x = x - step;}
+			break;
+
+			case 'R':
+			if (x <900 ) { x = x + step;}
+			break;
+
+			case 'U':
+			if (y >100) { y = y - step;}
+			break;
+   
+		}
+		//move to new position of x and y
+		document.getElementById('img').style.top = y + "px";//vertical movement
+		document.getElementById('img').style.left = x + "px";//horizontal movement
+
+		//display the coordinates of the new x and y
+		document.getElementById('msg').innerHTML = "X: " + x + " Y: " + y;
+
+	}
+	//checking which arrow is presed
+	document.onkeydown = function(){
+		switch(window.event.keyCode){
+			case 37:
+			disp('L')//execute a function by passing parameter
+			break;
+
+			case 38:
+			disp('U')
+			break;
+
+			case 39:
+			disp('R')
+			break;
+
+			case 40:
+			disp('D')
+			break;
+		}
+	}
+
+</script>
+</html>

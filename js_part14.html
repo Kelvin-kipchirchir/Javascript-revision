@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Advance Javascript</title>
+	<h2>Advanced js </h2>
+</head>
+<body>
+<h3>Javacript typed array</h3>
+<!--types of arrays
+illustrates an array like view of the underlying binary data buffer.many numbers of different global properties whose value of types
+int 8 Array-size of bytes:1,ranges from -128 to 127
+unit 8 array type is octet:0-255
+unit 8 clamped array,octet:0-255
+
+
+array methods:
+1.copyWithin()
+copies as portion of an array to another location in same array and returns size without modification
+copyWithin(target)
+copyWithin(target,start)
+copyWithin(target,start,end)
+
+-->
+<h2>Hello world</h2>
+<p>Currently running the getData() function</p>
+<p>The getData() function is called its argument and callback excecuted after completion of getData() function</p>
+</body>
+<script type="text/javascript">
+	var arr1 = [1,2,3,4,5]
+	arr1.copyWithin(2)//placing from index position 2
+	document.writeln(arr1+"<br>");
+
+	var arr2 = [1,2,3,4,5,6]
+	arr2.copyWithin(1,3)//placing from index position 2
+	document.writeln(arr2+"<br>")
+
+	var arr3 = [1,2,3,4,5,6,7,8,9,10]
+	arr3.copyWithin(1,2,4)//placing elements at index position 1 element between index 2 and 4
+	document.writeln(arr3+"<br>")
+ 
+ //2.entries() method
+  //returns a new array iterator object that constains key/value pair for each index in an array
+
+    var lang = ["java","php","react"];
+    var iter = lang.entries();//method highly discouraged
+    document.write(iter.next().value)
+    document.write("<br>");
+    document.write(iter.next().value);
+    document.write("<br>");
+    document.write(iter.next().value);
+
+    var lang2 = ["react ja","react native","vue js","node js"];
+    var iterr = lang2.entries();
+    for(let i of iterr){
+    	document.write("<br>");
+    	document.write(i+"<br>")
+    }
+    /*3.every()
+    tests whether all the elements of an array in the given condition satisfy or not that its provided by the function passed for it as arguments::syntax=>array.every(function(value,index,arra),this value)*/
+
+    var me = [200,101,450];//prints true
+    //var me = [200,102,540,99];//prints false becauses of 99
+    function Try(n){
+    	return n>100
+    }
+    document.write(me.every(Try)+"<br>")
+
+    /*4.fill()
+    fills all the elements of array from start index to end index with static value
+    array.fill(value)
+    array.fill(value,start)
+    array.fill(value,start,end)*/
+    var fills = [1,2,3,4,5]
+    fills.fill(20)
+    document.write(fills+"<br>")//replaces all elements with the value 20
+
+    var fill2 = [1,2,3,4]
+    fill2.fill(20,2)//value=20 start index =2,
+    document.write(fill2+"<br>")
+    
+    var fill3 = [1,2,3,4,5]
+    fill3.fill(20,2,3)//value=20,startindex=2,last index=3
+    document.write(fill3+"<br>")
+    /*5.filter()
+    creates a new array with all elements that pass test implemented by provided function
+    -finds all elements of an array from the start index to the end index with a starting value
+    */
+    function JavaTrial(value){
+    	return value >=5
+    }
+    var numb = [1,2,3,4,5,6,7,8,9,10]
+    var res = numb.filter(JavaTrial)
+    document.write(res+"<br>")//prints 5,6,7,8,9,10
+    /*
+    6.find()
+    used to get the value of the first element in the array that satisfies the provided condition
+    find() method apply the function once for ecach element present in the array
+    syntax:array.find(function(value,index,arr))
+
+    */
+    function findall(value){
+    	return value >12
+    }
+    var list = [2,4,6,8,10,12,16,18]
+    var result = list.find(findall);
+    document.write(result+"<br>")
+    /*
+    7.findIndex()
+    function provides the index of the first element in the array that completes the test
+    if test is not satisfied return -1
+    syntax::array.findIndex(function,(value,index,arr)this value)
+
+    */
+    function findindex(value){
+    	return value >34
+    }
+    var list2 = [1,2,3,4,5,6,10,20,50,80]//js index starts with 1 not 0 like other programming languages
+    var ress = list2.findIndex(findindex)
+    document.write(ress+"<br>")
+
+    function findindexx(value){
+    	return value == 6
+    }
+    var list21 = [1,2,3,4,5,6,10,20,50,80]//js index starts with 1 not 0 like other programming languages
+    var ress2 = list21.findIndex(findindexx)
+    document.write(ress2+"<br>")
+    /*
+    8.foreach
+    method calls the provided function for each element of an array
+    syntax:forEach(function,(value,index,arr),this value)
+    
+    */
+    function isMore(){
+    	var items = [1,20,47];
+    	var trial = [];
+    	items.forEach(function(item){
+    		trial.push(item*2)
+    	})
+    	document.write(trial+"<br>")
+    }
+    isMore();
+
+    var prog = ["core java","c","c++","perl"]
+    prog.forEach(function(element){
+    	document.write(element+"<br/>"+"<br/>");
+    })
+
+ /*
+ 9.includes()
+ determines whether a particular element is present in an array or not
+
+ */
+ var aa = [1,2,3,5,6]
+ var bb = [1,2,8,10,20]
+ checka = aa.includes(6)
+ checkb = bb.includes(50)
+ document.write(checka);document.write(checkb+"<br>");
+ /*
+ 10 index of()
+ used to find the index of slement provided as an argument of function provided -case sensitive
+ */
+ function identity(){
+ 	var id = [2,3,4,5,6,7]
+ 	document.write(id.indexOf(6,5))//-1
+ 	var id2 = [2,3,5,4,6,7,8,9,12]
+ 	document.write(id2.indexOf(6,5))//4
+ }
+ identity()//prints -1 
+ /*
+ 11.join()
+ used to join all elements of an array into a string element separated by a specific separator
+Array.join(separator)
+ */
+ var sep_list = ["core java","react","c","c++"]
+ document.write(sep_list.join());
+ document.write("<br>");
+ document.write(sep_list.join('.'));//using dots
+ document.write(sep_list.join('--'));//using dashes
+
+ /*
+ 12.Keys()
+method returns an Array iterator object with keys of an array
+ */ 
+ var A = new Uint8Array([1,2,3,4,5])
+ var B = new Uint8Array([5,10,15,20])
+ a = A.keys();
+ document.write(a.next().value+"<br>");
+ b = B.keys();
+ b.next();
+ document.write(b.next().value+"<br>");
+ /*
+13.LastIndexOf()
+returns the last position of a value or it returns -1 if value is not found
+ */
+ function lasts(){
+ 	var strn = "javascript is fun"
+ 	//find index of string
+ 	var index = strn.lastIndexOf("s");
+ 	document.write(index+"<br>");
+ }
+ lasts();
+ /*
+ 14.map() method 
+ forms a new array creates a new types array with results of calling  a provided function of every element in typed array
+ syntax:array.map(function(value,index,arr),this value)
+
+ */
+ var input = [1,2,3]
+ var output = input.map(function(input){
+    return input * 2
+ })
+ document.write("Array after mapping");
+ document.write("<br>")
+ document.write(output+"<br>")
+ document.write(input+"<br>")
+
+ var babyjs = ["react js","node js","vue js","vanilla js"];
+ //determine the length of each name and save it in an array
+ var namelengths = babyjs.map(function(value,index,array){
+    var len = value.length;
+    return len;
+ });
+ document.write("Array using map() method");
+ console.log(namelengths)//go to your console and look at the lengths
+ document.write("<br>")
+ document.write("Actual array");
+ document.write(babyjs)
+ /*
+ 15.reduce() method
+ reduces the elements of an array into a single value and returns value of the function stored in an accumulation and each element in array(left to right)
+ syntax::array.reduce(function(total,currentvalue,index,arr),initial value)
+ */
+ //example 1
+ let red = [10,20,30]
+ //sum of all elements
+ let sum = red.reduce(function(passedln,item){
+    return passedln + item;//0 is initial value
+ },0)
+ document.write("Array sum is:"+sum+"<br>")
+ //example 2
+let sum2 = red.reduce(function(passedln,item){
+    return passedln + item;
+},5)
+document.write("Array sum is:"+sum2+"<br>")
+//example 3
+var AA = [["java","MongoDB"],["python","C"],["RDBMS","C++"]];
+//calling reduce function
+a = AA.reduce((PreviousValue,CurrentValue)=>PreviousValue.concat(CurrentValue));
+document.write(a+"<br>");//should print java,MongoDB,python,C,RDBMS,C++
+
+/*
+16.reverse()
+method is used to reverse arrays
+
+*/
+function rev(){
+    var a_rev = [1,2,3,4,5];
+    document.write(a_rev);
+    //reversing
+    var new_arr = a_rev.reverse();
+    document.write("<br>");
+    document.write("outputing after reverse"+"<br>")
+    document.write(new_arr+"<br>")
+}
+rev();//should print 5,4,3,2,1
+
+/*17 set () method
+sets value in a given array
+*/
+var buffer = new ArrayBuffer(8);
+//creating some typed array
+var c = new Uint8Array(buffer)
+//copying values into array starting at index 2
+c.set([1,2,3,4],2)
+//printing modified value
+document.write(c+"<br>")
+
+/*
+18.slice () method
+gives the selected elements of the array in which its implemented
+
+*/
+function slicing(){
+   var a_slice = [12,13,14,60,63,70] ;
+   //extracted array
+   var new_slice = a_slice.slice(2);//removed the first two elements of the array
+   document.write("before slicing:"+a_slice)
+   document.write("<br>");
+   document.write("After slicing:"+new_slice+"<br>")
+}
+slicing();
+
+/*
+19.some() method
+examines the elements of array if they are satisfied on the given condition or not
+-condition checked by argument function
+
+*/
+function some(element,index,array){
+ return element >5
+}
+function isMore(){
+    var arr_ay = [1,2,3,4,5,6,7,8,9]
+    //check the condition in array
+    var value = arr_ay.some(some)
+    document.write(value)
+}
+isMore()//should print true
+/*
+20.Array sort()
+used to sort the array and returns an updated array
+*/
+function sorting(){
+    var s_array = [2,5,8,1,4]
+    document.write("after sorting:"+s_array.sort()+"<br>")//sorting 
+    document.write("<br>")
+    document.write("before it was sorted:"+s_array+"<br>")
+}
+sorting()
+//example 2
+var so_arr = [2,5,3,18,14]
+document.write(so_arr.sort(function(a,b){
+    return a<b
+}));
+document.write("<br>")
+document.write("before sorting"+so_arr+"<br>")
+
+/*
+21.subarray() method
+gives the selected elements of the array and does not change original array
+
+*/
+function subs(){
+    var sub_ar = new Uint8Array([1,2,3,4,5])
+    //extracted array
+    var new_sub = sub_ar.subarray(3)
+    document.write("without using the subarray() method <br>");
+    document.write(sub_ar)
+    document.write("<br>")
+    document.write("using slice () method <br>")
+    document.write(new_sub)
+}
+subs()
+//example 2
+function subs2(){
+    var sub_arr = new Uint8Array([12,34,56,78,90])
+    var new_sub_arr = sub_arr.subarray(0,4)//prints from range 1-4
+    document.write("without using subarray method() <br>")
+    document.write("<br>")
+    document.write(new_sub_arr)
+}
+subs2()
+/*
+22.Value () method
+used to define the values of the contents in an array syntax:array.values()
+*/
+var v_arr = new Uint8Array([1,3,4,6,7,8])
+//calling array.values() method
+var javas = v_arr.values()
+document.write("printing values of index:<br>")
+document.write(javas.next().value)//should print 1
+document.write(javas.next().value)//should print 3
+document.write(javas.next().value+"<br>")//should print 4
+
+/*23.toString() method
+used to convert elements of a given array to a sring and contents separated by a comma
+array.toString()
+*/
+var ts = "JavaScript"
+var ts2 = "Core Java"
+var comb = [ts,ts2]
+//calling to string method
+var to_str = comb.toString()
+document.write(to_str+"<br>");//should print javascript,core java
+/*
+24.toLocaleString()
+used to convert the elements of a given info into a string and the strings separated by a comma
+syntax::=>array.toLocaleString()*/
+var js = "JavaScript"
+var java = "core java"
+var combo = [js,java];
+//calling toLocalString
+var to_local_string = combo.toLocaleString();
+//printing string
+document.write(to_local_string+"<br>")
+
+
+/*
+PART2:JAVASCRIPT SET OBJECT:
+used to store elements with unique value.values can be of any type;
+whether primitive values object refers to:
+NB-set object uses the concept of key internally
+  -set object cannot contain duplicate values
+   - set objectiterates its elements in insertion order*/
+
+//examplle of set methods
+/*
+1.set add() method
+used to add an element to a set object with specified value*/
+var set = new Set();
+set.add("jQuery")
+set.add("Ajax")
+set.add("json")
+set.add("AngularJs")
+//or set.add("jQuery").add("Ajax").add("json")
+for(let elements of set){
+    document.write("iterating through elements:"+elements +"<br>")
+}
+
+/*2.clear () method
+method is used to remove all elements from a set object*/
+var cl_set = new Set();
+cl_set.add("jQuery").add("Ajax").add("json").add("Bootstrap")
+document.write("size before invoking clear() method:"+cl_set.size+"<br>")
+cl_set.clear();
+document.write("size after invoking clear() method:"+cl_set.size+"<br>")
+/*
+3.delete () method
+used to remove all the elements from a set*/
+var del_set = new Set();
+del_set.add("jQuery").add("Ajax").add("json").add("Bootstrap")
+document.write("size before invoking delete () method:"+del_set.size+"<br>")
+del_set.delete("Bootstrap")
+document.write("size after invoking delete () method:"+del_set.size+"<br>")
+
+/*4.Entries method
+method returns an object of a new set iteration.object contains an array of [value,value] for each element
+syntax:setObject.entries()*/
+var e_set = set.entries()
+for(i=0;i<set.size;i++){
+    document.writeln(e_set.next().value+"<br>")
+}
+//another way is
+var iter_set = set.entries()
+for(let elem of iter_set){
+    document.write("elements"+"<br>")
+}
+/*
+5.forEach() method
+executes the specified function once for each value in a set object*/
+var each_set = new Set(["jQuery","AngularJs","Ajax","JSON"]);
+document.write("Fetching values from array:"+"<br>")
+each_set.forEach(function display(value1,value2,each_set){
+    document.write('Key['+value1+']='+value2+"<br>")
+    document.write(each_set.has("jQuery"+"<br>"))//should print true
+
+})
+/*
+6.Has () method
+identifies whether the set object contains a specified value.returns true otherwise false*/
+//using example above
+var each_set = new Set(["jQuery","AngularJs","Ajax","JSON"]);
+document.write(each_set.has("Bootstrap"+"<br>"))//should print false
+document.write(each_set.has("jQuery"+"<br>"))//should print true
+
+/*
+7.values() method
+returns an object of new set iteration object contains value for each element*/
+var value_set = set.values()
+document.write(value_set.next().value+"<br>")
+document.write(value_set.next().value+"<br>")
+
+//another way is:
+var val_set = set.values();
+for(i=0;i<set.size;i++){
+    document.write(val_set.next().value+"<br>")
+
+}
+/*
+JS PART3:MAP OBJECT
+used to map keys to values.It stores each element as a key-value pair;operates the elements such as Search,update,delete on basics of a specified key
+syntax::new map[iteratable]
+NB-A map object:
+i)cannot contain duplicate keys
+2)can contain duplicate values
+3)key and value can be of any type
+4)iterates its elements in insertion order
+
+map methods has similar methods as the set method;
+1)clear-map.clear()
+2)delete-map.delete()
+3)entries-map.entries()
+4)forEach()
+function display(values,keys){
+    document.write(values+""+key+"<br>")
+}
+*/
+var maps = new Map()
+maps.set(1,"jquery")
+maps.set(2,"bootrap")
+maps.set(3,"zoning")
+var i_map = maps.entries();
+for(i=0;i<maps.size;i++){
+    document.writeln(i_map.next().value+"<br>")
+}
+
+document.writeln("size before invoking clear ():"+maps.size+"<br>")
+//maps.clear()
+document.writeln("size after invoking clear():"+maps.size+"<br>")
+//delete()
+document.writeln("size before invoking delete method(): "+maps.size+"<br>")
+maps.delete(3)
+document.writeln("size after deleting method():"+maps.size+"<br>")
+//5.get()-finds values
+document.writeln(maps.get(1)+"<br>")
+document.writeln(maps.get(2)+"<br>")
+
+//6.has()
+document.writeln(maps.has(3)+"<br>")
+document.writeln(maps.has("sql")+"<br>")
+//keys()
+var maps_keys = maps.keys()
+for(i=0;i<maps.size;i++){
+    document.writeln(maps_keys.next().value+"<br>")
+}
+var map_values = maps.values()
+for(i=0;i<maps.size;i++){
+    document.writeln(map_values.next().value+"<br>")
+}
+//
+function display(keys,values){
+    document.write(keys+":"+values+"<br>")
+}
+maps.forEach(display)
+
+/*
+4:Javascript weak subject
+tupe of collection that allows us to store weakly objects unlike sets weak sets have 
+Aweak set:
+i)contain unique objects
+2)if there is no reference to a stored object are targeted to a stored object
+3)an enumerable
+methods*/
+//1.add
+var ws = new WeakSet()
+var obj1 = {};
+var obj2 = {};
+ws.add(obj1)
+ws.add(obj2)
+//checking if the weakset contains added object
+document.writeln(ws.has(obj1+"<br>"+obj2+"<br>"))
+
+//method 2
+var ws_2 = new WeakSet()
+try{
+    ws_2.add(obj);
+    document.writeln(ws_2.has(obj))
+}catch(error){
+    document.writeln(error)
+}
+
+/*
+4 weak map
+Almost similar to map,stores each element as a key-value pair where keys are weakly referenced
+i)allow keys of object type only
+2)if there is no reference to a key object they are targeted to garbage object
+3)key are not enurable hence doesnt provide any method  to get list of keys
+4)iterates its objectelements in an insertion order*/
+//1.delete() method
+var wm = new WeakMap()
+var obj1 = {};
+var obj2 = {};
+var obj3 = {};
+wm.set(obj1,"xml")
+wm.set(obj2,"html")
+wm.set(obj3,"csv")
+document.writeln("elements before invoking delete method:"+wm.has(obj3)+"<br>")
+wm.delete(obj3)
+document.writeln("elements after invoking delete method:"+wm.has(obj3)+"<br>")
+
+//get() method
+//returns values of specified key of an element from a weakmap
+document.writeln(wm.get(obj2)+"<br>")
+document.writeln(wm.get())//should print undefined
+
+//set() method
+//used to add or update an element to weak map object in a particular key-value pair each value
+//methods
+var w_m = new WeakMap();
+var ob3 = {};
+var ob1 = {}
+var ob2 = {}
+w_m.set(ob1,"anaconda").set(ob2,"vscode").set(ob3,"sublime")
+document.writeln(w_m.get(ob2)+"<br>")
+document.writeln(w_m.get(ob3)+"<br>")
+//method 2
+var w_mm = new WeakMap();
+var o1 = {};o2 = {};o3 = {};
+w_mm.set(o1,"blueteam").set(o2,"grey team").set(o3,"Alfa team")
+document.writeln(w_mm.get(o2)+"<br>")
+/*
+Javascript callback
+callback function can be defined as a function passed into another  function as a perimeter or is a function passed to another function as an argument
+callback function function runs after completion of outer function.useful when developing asynchronous javascript code
+its easiest to create i.e have to simplify pass the callback function as a perimeter to another function and call it right after completing at the task
+callback mainly used to handle asynchronous operations ie
+->registering event listeners
+->fetching or inserting data into a file
+
+Example below
+there are two functions getData(x,y) callback and showData()
+-here callling the getData() with the showData() function allong with two parameters
+-As a result getData() is invoked with specific parameters including callback
+getData()->displays multiplication of no once callback gets excecuted*/
+//example
+function getData(x,y,callback){
+  document.write("The multiplication of the numbers:"+x+"and"+y+"is:"+(x*y)+"<br>")
+  callback()
+}
+function showData(){
+    document.write("This is the showData() method excecuted after completion of getData() method")
+}
+getData(20,30,showData)
+//callback are generally used to continue the excecution after completing an asynchronous operation ie asynchronous callbacks
+/*example two
+2 functions getData(callback),which takes the input from user using prompt box and function show data(name,amount) which displays data entered by the user using alert box*/
+function show_Data(name,amount){
+   //alert("Hello:"+name+"your amount is:"+amount+"<br>")
+
+}
+function get_Data(callback){
+    var name = prompt("Welcome to Dragon Empire\n what is your name?");
+    var amount = prompt("Enter some amount...")
+    callback(name,amount+"<br>")
+}
+//get_Data(show_Data)
+/*
+JAVASCRIPT CLOSURE
+-Can be defined as js feature in which the inner function has access to the outer function variable.In js every time a closure is created with creating a function
+-has 3 scope chains listed as 
+->access to its own scope
+->access to variable of outer function
+->access to global variable
+*/
+document.write("cant see anything"+"<br>")
+function func(){
+    var d = 4;
+    function innerfunc(){
+        return d;
+    }
+    return innerfunc;
+}
+var outp = func();
+document.write(outp());//first 4
+document.write("");
+document.write(outp());//second 4
+func()
+
+/*we have 2 functions closures() and innerfun() closure() creates a local variable a and the function innerfunc()
+innerfunction can access the outer function variable,so the function innerfunction() can access variable a which is declared and defined in closures
+->This is the closure in action in action in which the innerfunction can have access to the global variables and outer function variables
+->The entire body of a function innerfunc() is returned and stores in the variable  outp,due to the statement return innerfunc().The inner function is not extended only when followed by the braces()
+->in the output,the code will display the value "a" defined in the parent function*/
+function func_a(j){
+  function innerfunc_a(k){
+    return j*k;
+  }
+  return innerfunc_a
+}
+var out_put = func_a(5)
+document.write(out_put(5)+"<br>")//prints 25
+document.write("<br>")
+document.write(out_put(6)+"<br>")//prints 30
+/*
+in the above function we have 2 parametererized function func_a and innerfunc_a.func_a has a perimeter j and innerfunc_a has perimeter k.The function func_a() returns a function innerfunc_a() which takes and argument and returns the multiplication od a and b.in program the output is closure*/
+//Example 3:closure with a loop
+function func_c(){
+    function close_c(val){
+        return function(){
+            return val
+        }
+    }
+}
+var m = [];
+var n;
+for(n=0;n<5;n++){
+   m[n] = close_c(n)
+}
+return m;
+var out_m = func_c();
+document.write(m[0]())
+document.write("")
+document.write(m[1]())
+document.write("")
+document.write(m[2]())
+document.write(m[3]())
+document.write(m[4]())
+//should print 1,2,3,4
+//closure points the variable and stores the refernce  of a variable.they dont remenber the variable value
+
+</script>
+</html>

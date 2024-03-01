@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JAVASCRIPT SCOPE</title>
+	<h1>javascript scope,scroll</h1>
+	<style>
+		#para,#para2,#para3{
+			width: 250px;height: 150px;
+			overflow: scroll;
+			border: 1px solid red;
+			font-size: 25px;
+			font-family: monospace;
+		}
+	</style>
+</head>
+<body>
+<!-- 
+scope->defined as a region of excecution a region where the expression and value can be referenced
+can be two scopes-
+global scope-variable can be accessed from any part
+local scope-accessed only within the scope of the function where its declared
+-->
+<h3>Hello world</h3>
+<h3>scroll the bordered text to see the effects</h3>
+<p>This is an example of using the <br> onscroll attribute</p>
+<p id="para" onscroll="func();">
+
+	Hi;welcome to the dragon empire
+	<br>I believe no one is perfect in this world and nothing is eternal<br>
+		.But we can always try to be better versions of ourselves.<br>
+	This is the Mamba Mentality
+</p>
+
+<p id="para2">
+
+	Hi;welcome to the dragon empire
+	<br>I believe no one is perfect in this world and nothing is eternal<br>
+		.But we can always try to be better versions of ourselves.<br>
+	This is the Mamba Mentality
+</p>
+<p id="para3">
+
+	Hi;welcome to the dragon empire
+	<br>I believe no one is perfect in this world and nothing is eternal<br>
+		.But we can always try to be better versions of ourselves.<br>
+	This is the Mamba Mentality
+</p>
+<p id="para1"></p>
+<script type="text/javascript">
+
+	function example(){
+		var a = 500;
+		document.write("accessing variable inside function:"+a+"<br>")
+	}
+	example()
+	/*
+	declaring a variable inside the function without using any variable declaration keyword.Then we are accessing the corresponding variable outside the function will produce no eeror in generating related to undefined variable*/
+	document.write("<br>")
+	//document.write("outside example() function="+a)//prduces an error
+
+	/*
+	2.javascript scroll
+	onscroll event in js occurs when a cross bar is used for an element.the event is fixed when user moves the scrollbar up and own.we can use the css overflow property for creating scrollnar.In html wecan use the onscroll atribute and assign a javascript function to it
+	syntax:
+	1)In HTML
+	<element onscroll = "func()">
+    2)in javascript
+    object.onscroll = function(){
+	myscript
+    }
+    3)using addEventListener() method
+    object.addEventListener("scroll",myscript)
+	*/
+    //1.using HTML onscroll attribute.When the user scrolls the paragraph,color and background color will change
+    function func(){
+    	document.getElementById("para").style.color="red";
+    	document.getElementById("para").style.background = "lightgreen"
+    	document.getElementById("para").innerHTML = "You are scrolling the context"
+    }
+    //2.using javascript
+    document.getElementById("para2").onscroll = function(){
+    	func2()
+
+    }
+    function func2(){
+    	document.getElementById("para2").style.color = "brown"
+    	document.getElementById("para2").style.background = "yellow"
+    	document.getElementById("para1").innerHTML = "You are scrolling the context "
+    }
+    //3.using event listeners
+    document.getElementById("para3").addEventListener("scroll",func3)
+    function func3(){
+    	document.getElementById("para3").style.color = "blue"
+    	document.getElementById("para3").style.background = "grey"
+    	document.getElementById("para1").innerHTML = "You are scrolling the context "
+    }
+
+</script>
+</body>
+</html>

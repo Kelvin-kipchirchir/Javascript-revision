@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Document Object Model</title>
+	<strong>Part 4:</strong><head>Introducing Document Object Model</head>
+</head>
+<body>
+<form name="form1">
+	<label>Enter name:</label><br>
+	<input type="text" name="name"><br>
+	<label>Enter email</label><br>
+	<input type="email" name="email"><br>
+	<input type="button" name="" value="print name" onclick="printvalue();"><br>
+
+    <label>Please input a number to cube:</label><br>
+	<input type="text" name="number" id="number">
+	<input type="button" name="" value="cube" onclick="getCube();"><br>
+</form>
+
+<div class="class">
+	<h2>First function</h2>
+	<p>This is an example of class implementation</p><br>
+	<input type="button" name="" value="clickme" onclick="getClass();"><br>
+	<h3>Second function</h3>
+	<p>This is a paragraph</p>
+	<p>counting the number of paragraphs</p>
+	<p>look at this sample example</p>
+	<input type="button" name="counting" value="count" onclick="countpara();">
+</div>
+
+<form name="myform">
+	<input type="button" name="comment" value="comment" onclick="showcommentform();">
+	<div id="mylocation">
+	</div>
+</form>
+<div class="class1">
+	<p>hide or display </p>
+	<button onclick="commentform();">post comment</button>
+</div>
+<div id="mylocation"></div>
+
+<form name="pform">
+	<label>password:</label><br>
+	<input type="password" name="password" value="" onkeyup="validate();"><br>
+	strength:<span id="pass_span">no strenght</span>
+</form><br><br>
+
+<div class="validform">
+	<form name="valform" method="post"  onsubmit="return validateform();">
+		<label>Name:</label><br>
+	<input type="text" name="name"><br>
+    <span id="name_span"></span><br>
+	<label>Email:</label><br>
+	<input type="text" name="email"><br>
+	<span id="email_span"></span><br>
+	<label>Age:</label><br>
+	<input type="number" name="age"><br>
+	<span id="age_span"></span><br>
+	<label>Password:</label><br>
+	<input type="password" name="password"><br>
+	strength:<span id="password_span">no strenght</span><br>
+	<input type="password" name="cpassword"><br>
+	strength:<span id="password_span">no strenght</span><br>
+	<button type="submit" value="register">register</button>
+	</form>
+</div>
+
+
+
+</body>
+<script type="text/javascript">
+	/*-represents the whole html document
+	-when html document is loaded into the browser it becomes the document object.
+	-it is the root element that represents html document
+	-has properties and methods*/
+	/*1..Methods
+	can access and change contents in a  document by its meyhods
+	a)write("string")-writes a given string on the document
+	b)writeln("string")-writes a given string on document with newline character at the end
+	c)getElementById()-returns element having a given id value
+	d)getElementByName()-returns all elements having a given name value
+	e)getElementByTagName()-returns all elements having a given tag name
+	f)getElementByClassName()-returns all elements having a given className
+	*/
+	
+	function printvalue(){
+	var name=document.form1.name.value;//form1-name of the form;name-attributes name of the input text;value-is the value that retuns value of the input string
+	alert("welcome:"+name)	
+	}
+	//c...getElementById()
+	function getCube(){
+		var number=document.getElementById("number").value;
+		alert(number*number*number)
+
+	}
+	//d...getElementByClassName()
+	/* used for selecting or getting the elements through their class name value.This DOM method returns an array-like objects that consists of allelements having a specified classname*/
+	function getClass(){
+    var x=document.getElementsByClassName("class");
+    document.write("on calling x it will return an array-like object:<br>"+x);
+}
+//e...getElementsByTagName
+//syntax-> document.getElementsByTagName("name")
+function countpara(){
+	var totalpara=document.getElementsByTagName("p");
+	var totalh2=document.getElementsByTagName("h2");
+	var totalh3=document.getElementsByTagName("h3");
+	alert("total p tags are:"+totalpara.length+"h2 tags:"+totalh2.length+"h3 tags:"+totalh3.length)
+
+}
+//f...innerHTML
+//used to write the dynamic html on html document.used mostly in web pages to generate the dynamic html such as registration form comment form etc
+function showcommentform(){
+	var data='Name:<input type="text" name="name"><br> comment:<br><textarea rows="5" cols="80"></textarea><br><input type="submit" name="post" value="post comment" onclick="posting();">'
+	document.getElementById("mylocation").innerHTML=data;
+}
+function posting(){
+	alert("posting processing.....")
+}
+//example2
+//show or hide comment form using InnerHTML 
+var flag=true;
+function commentform(){
+	var cform='<form action="comment"><label>Enter Name:</label><br><input type="text" name="name" ><br><label>EnterEmail:</label><br><input type="email" name="email" ><br><label>Enter comment:</label><br><textarea rows="5" cols="50"></textarea><br><input type="submit" name="post" value="post comment" onclick="posting();"></form>'
+	if(flag){
+	document.getElementById("mylocation").innerHTML=cform;
+	flag=false;
+}else{
+	document.getElementById("mylocation").innerHTML="";
+	flag=true;
+}
+}
+
+//innerText
+//can be used to write dymamic text on html document used in web pages to generate the dynamic content ie writing validation pages,passwors,strenght
+function validate(){
+	var msg;
+	if(document.pform.password.value.length>5){
+		msg="good"
+	}else{
+		msg="poor"
+	}
+	document.getElementById("pass_span").innerText=msg;
+}
+
+//form validation using above methods
+//through js we can validate name,password,emails,dates
+function validateform(){
+	var name = document.valform.name.value;
+	var email = document.valform.email.value;
+	var atposition = email.indexOf("@");
+	var dotposition = email.lastIndexOf(".");
+	var age = document.valform.age.value;
+	var password = document.valform.password.value;
+	var cpassword = document.valform.cpassword.value;
+	if(name == null || name == ""){
+		document.getElementById("name_span").innerHTML="Name can't be blank";
+		return false;
+	}else if(email == null || email == ""){
+        document.getElementById("email_span").innerHTML="email cannot be blank";
+        return false;
+	}else if(atposition<1 || dotposition<atposition+2 || dotposition){
+        document.getElementById("email_span").innerHTML="Please enter a valid email address\n at position:"+atposition+"\n "dotposition;
+        return false;
+	}
+	else if(password.length<6){
+		document.getElementById("password_span").innerHTML="password must be at least 6 characters"
+		return false;
+	}else if(name.length<5){
+		document.getElementById("name_span").innerHTML="Name is too short"
+		return false;
+	}else if(password != cpassword){
+		document.getElementById("password_span").innerHTML="password mismatch";
+		return false;
+	}else if(isNaN(age)){
+		document.getElementById("age_span").innerHTML="Enter Numeric values only";
+		return false;
+	}
+
+	else{
+		alert("everything is okey")
+	}
+	
+}
+
+
+	
+</script>
+</html>

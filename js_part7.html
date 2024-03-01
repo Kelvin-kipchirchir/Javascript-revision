@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript events</title>
+	<h2>Part7:Javascript Events</h2>
+</head>
+<h4>Load event</h4>
+
+<body onload="window.alert('Page has successfully loaded')">
+	<form>
+		Onclick event
+		Name:<input type="text" name="name" value="name"><br>
+		<input type="button" value="who is this?" onclick="clickevent()">
+
+	</form>
+	<h4>Mouse over event</h4>
+<p onmouseover="mouseoverevent()">keep cursor over me</p><br>
+<h4>focus event</h4>
+<p>Please enter something here</p>
+<input type="text" id="input" onfocus="focusevent()">
+<h5>Key down event</h5>
+<p>Please enter something again</p>
+<input type="text" id="input1" onkeydown="keydownevent()"><br>
+<h2>Javascript addEventListener()</h2>
+<p>click following button to see the effect</p>
+<button id="btn" >click me</button>
+<p id="para"></p>
+<!--you can add many events to same element without overwritting existing events-->
+<p>click following button to see some effects</p>
+<button id="btn2">click me</button>
+<p id="para1"></p>
+<p id="para2"></p>
+
+<h2>Example 3</h2>
+<p>adding multiple events of different type to same element</p>
+<p>click following button to see effects</p>
+<button id="add">click add</button>
+<p id="para3"></p>
+</body>
+<script type="text/javascript">
+	/*Event-is a state  of an object js is included in HTML;js reacts over events and allows excecution
+	some HTML Events are;
+	    1)Mouse events
+	a)click-onclick->when mouse clicks
+    b)mouseover-onmouseover->when cursor of mouse comes over an element
+    c)mouseout-onmouseout->when cursor of mouse leaves an element
+    d)mousedown-onmousedown->when mouse button is presed over an element
+    e)mouseup-onmouseup->when mouse button is released over the element
+    f)mousemove-onmousemove->when mouse movement takes place
+       2)Keyboard events
+    a)keydown and key up-on key up and key down-when user press and then released the key
+       3)form events
+    a)focus-onfocus->when user focuses on an event
+    b)submit -onsubmit ->when user submits a form
+    c)blur -onblur ->when the focus is away from a form element
+    d)change -onchange ->when user modifies or changes values of a form element
+      4)windows document event
+    a)load-onload->when browser finishes loading the page
+    b)unload ->onunload ->when visitor leaves the current web page
+    c)resize -onresize ->visitor resizes window of the browser
+
+
+*/
+function clickevent(){
+	document.writeln("This is a javascript event")
+}
+function mouseoverevent(){
+	alert("this is javascript mouse over event")
+}
+function focusevent(){
+	document.getElementById("input").style.background = "aqua";
+}
+function keydownevent(){
+	document.getElementById("input1")
+	alert("press any key")
+}
+document.writeln("The page is loaded successfully")
+/*
+JAVASCRIPT EVENT LISTENER
+add EventListener() method is used to attach an event handler to a particular element
+it does not overide existing event handlers
+events are said to be an essential part of js
+-web pages respond according to events that occured.events can be user-generated in api
+addEventListener() method is an inbuilt function of js.Can add multiple event handler to a particular event without overwritting existing event handlers
+sybtax
+element.addEventListener(event,function,useCapture)
+useCapture-optional parameter(true/false)
+true-eventhandler executes capturing phrase
+false-handler executes in bubbling hrase 
+
+*/
+document.getElementById("btn").addEventListener("click",fun);
+function fun(){
+	document.getElementById("para").innerHTML = "Hello word" + "<br>" + "welcome to the dragons Empire.com"
+}
+function fun1(){
+	alert("welcome to dragon-empire")
+}
+function fun2(){
+	document.getElementById("para1").innerHTML = "i am the second function"
+}
+function fun3(){
+	document.getElementById("para2").innerHTML = "this is a third function"
+}
+var mybtn = document.getElementById("btn2");
+mybtn.addEventListener("click",fun1);
+mybtn.addEventListener("click",fun2);
+mybtn.addEventListener("click",fun3);
+
+
+function add(){
+	var para = document.getElementById("para3");
+	add.style.width = "50 px";
+	add.style.height = "50 px";
+	add.style.background = "blue";
+	add.style.color = "blue";
+
+}
+function add2(){
+	add.style.width = " ";
+	add.style.height = " ";
+	add.style.background = "grey";
+	add.style.color = "black";
+}
+var butt = document.getElementById("add");
+butt.addEventListener("mouseover",add);
+butt.addEventListener("click",fun1);
+butt.addEventListener("mouseout",add2);
+
+</script>
+</html>

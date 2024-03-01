@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS VOID()</title>
+	<h1>Introducing javascript void</h1>
+	<style>
+		
+	</style>
+</head>
+<body>
+<!-- 
+used to evaluate an expression and return the undefined used for obtaining the undefined primitive value
+-often used in hyperlinks usually the browser refreshes the page/loads a new page by loading
+-javascript void() can be used when we dont want to refresh/load a new page in the browser  or clicking a hyperlink operand 0 have 2 ways
+void(0) and void 0
+void(0)-tells the browser to do nothing(prevents the browser from reloading or refreshing page
+-useful when inserting links with important size of the page without any reloading
+-using it on such links prevents reloading of a page but allows to perform of useful fnction ie updating a value on a web page
+-also used to prevent unwanted redirection of the page
+syntax-void expression
+  example 1:
+  defining 2 links;in first link we are using void keyword.when correspond links get clicked it will do nothing becoz of void(0)
+  on click second time it will display an alert dialog box)
+-->
+<center>
+	<h1>Hello world:)</h1>
+	<h2>click following link to see changes </h2>
+	<h4>it is an example of using the <i>javascript void(0)</i></h4>
+	<a href="javascript:void(0)">It will do nothing</a>
+	<br><br>
+	<a href="javascript:alert('Welcome to the dragon empire')">click here for an alert</a>
+</center>
+<!-- 
+example2:
+-here we are passing the javascript:void(0) and link a website to the href attribute
+-here we are also using the ondbclick attribute,which shows an alert box on double clicking the hyperlink
+-on closing the alert dialog box the page will not redirect to specific link on the website-->
+<center>
+	<h1>Hello again:)</h1>
+	<h2>click the following links to see changes</h2>
+	<h4>You can see on closing the alert dialog box,the page will not redirect to https://www.dragonempire.com</h4>
+	<a href="javascript:void(0);https://www.dragonempire.com/" ondblclick="alert('Welcome to dragon empire')";>double click the link</a>
+</center>
+</body>
+</html>

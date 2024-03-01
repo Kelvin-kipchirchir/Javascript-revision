@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS SLEEP</title>
+	<h2>Introducing JS sleep/wait</h2>
+</head>
+<body>
+<!-- 
+PHP,and c both have sleep(sec) function to pause excecution for a fixed amout of time
+java has thread.sleep()
+3.python time.sleep()
+4.go has time.sleep(2*time.second
+js does't have sleep() function but we can create using feature such as promises and async/wait functions
+await is used for a promise and can only be used in an async function
+-behavopur of js is asynchronous,hence then the concept of promise to handle such asynchronous behaviour
+-because of this aynchronous behaviour;it continues its work and does not wait for anything during execution
+-Async/wait function help us to write code in a sysncronous manner
+syntax for sleep:
+sleep(delayTime in milliseconds.then())=>{
+	code to be excecuted
+} 
+-sleep function can be used along with async/wait to get the pause between the excecution
+syntax
+const func = async() => {
+    await sleep(delayTime in milliseconds)
+    //code to be excecuted
+}func()
+In example below we are using sleep() function with the async/await functionalities.There is a function func() is defined with some statements .initially the text "Hello world " is displayed on screen after function started
+then because of sleep function in func() paused for 2 seconds
+-After completing of given time period,the text "welcome to dragon empire,com will be displayed on screen and repeated till termination of the loop"
+text is going to be be repeated 10 times on screen with a pause of 2 seconds on every iteration of loop
+
+
+-->
+<h2>Example of using sleep() in javascript</h2>
+
+<h2>Example 2 of using sleep() in js</h2>
+<p>There is a sleep in 2000 milliseconds</p>
+
+</body>
+<script type="text/javascript">
+	function sleep(milliseconds){
+		return new Promise(resolve=>setTimeout(resolve,milliseconds))
+	}
+	async function func(){
+		document.write("Hello world");
+		for(let i = 1;i<=10;i++){
+			await sleep(2000)
+			document.write(i+""+"welcome to dragon empire.com"+""+"<br>")
+		}
+	}
+	//func();
+/*
+Example 2
+creating a promise with the setTimeout function.The setTimeOut() function excecutes code after a specified amount of time
+-also using the then() method which executes requird function after completing the promise
+-initially some of the statements are displayed on the screen then after a delayed of two seconds text "end" is displayed
+-Aproach is prefered to delay a function*/
+
+//example 2
+let sleeping = ms =>{
+	return new Promise(resolve=>setTimeout(resolve,ms))
+}
+document.write("Begin"+"<br>")
+document.write("Welcome to the dragon empire.com"+"<br");
+sleeping(2000).then(()=>{
+	document.write("end");
+});
+//after excecution code b;javascript sleep/wait.After delay of 2 seconds output javascript sleep/wait
+</script>
+
+</html>

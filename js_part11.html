@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animation in js</title>
+	<h3>Simple animation using properties of the DOM and functions of JS</h3>
+     <style type="text/css">
+     	#img{
+     		height: 100px;
+     		width: 100px;
+
+     	}
+     </style>
+</head>
+<body>
+	<form>
+		<img id="img" src="dragon.png">
+		<center>
+			<p>click the button below to move image right</p>
+			<input type="button" value="right" onclick="moveRight();">
+			<input type="button" value="left" onclick="moveLeft();">
+			<input type="button" value="up" onclick="moveUp();">
+			<input type="button" value="down" onclick="moveDown();">
+		</center>
+	</form>
+
+</body>
+<script type="text/javascript">
+	var img = null;
+	function init(){
+		img = document.getElementById("img");
+		img.style.position = 'relative';
+		img.style.left = "50px";
+	}
+	function moveRight(){
+		img.style.left = parseInt(img.style.left)+100+"px";
+	}
+	function moveLeft(){
+        img.style.left = parseInt(img.style.left)+-100+"px";
+	}
+	function moveUp(){
+		//alert("no function embedded!!")
+		img.style.top = parseInt(img.style.top)+-100+"px";
+	}
+	function moveDown(){
+		alert("coming soon!!!")
+	}
+	window.onload = init;
+</script>
+</html>

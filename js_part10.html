@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Window.onload()</title>
+	<h2>Javascript on load event</h2>
+	<style type="text/css">
+		#bg{
+			width: 200px;
+			height: 200px;
+			border: 4px solid blue;
+		}
+	</style>
+</head>
+<body onload="fun();">
+	<h2>An example of window.onload()</h2>
+	<div id="bg"></div>
+<!--
+can apply to launch aparticular function whenever pages are fully displayed.can also be used to verify the type and version of vistors browser
+-can also check what cookies a page uses  by using onload attribute
+-onload attribute fires when an object has been loaded.The purpose of this atribute is to excecute a script when associated elements load.For html on oad attribute is generally used  in the <body> to execute a script once the content including the css files images script is completely loaded.
+	::there is a difference between document onload  vs windows on load
+	fired before window.onload while window.onload trigger when the entire page loads including the css,files
+	syntax:
+	window.onload = func()
+	e.g below is a div element with height 200px and width 200px
+	-use the window.onload() to change background color,width,height, after loading page
+	-background clor set to red and width object 300px each
+-->
+</body>
+<script type="text/javascript">
+	window.onload = function(){
+		document.getElementById("bg").style.backgroundColor = "grey";
+		document.getElementById("bg").style.width = "300px";
+		document.getElementById("bg").style.height = "300px";
+	}
+	//example of onload of a body
+	function fun(){
+		alert("welcome to the hacker work")
+	}
+</script>
+</html>
